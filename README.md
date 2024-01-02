@@ -44,15 +44,22 @@ The Ref Project is located at [projects/peripheral/graphics/gr5526_smart_watch](
 - This Ref-Design is based on the GR5526 Starter Kit Board. you can find introduction to SK board here [GR5526_SK](https://www.goodix.com/en/kit/gr5526_starter_kit)
 - Click  [GR5526_Diagram](https://www.goodix.com/en/docview/GR5526-SK-BASIC-RevC_Rev.1.0?objectId=159&objectType=document&version=313) to view the circuit diagram for GR5526 SK Board 
 
-
 ### 2.4 Demo effect for Ref-Design 
+
+- UI Snapshot for This Design 
+
+  
+
+  ![](./resource/GR5526_watch_face_demo.png) 
+
+  
 
 - You can watch the Demo effect :
 
   - Click the web link : [Smart_Watch_Video](https://www.bilibili.com/video/BV1Re411X7P6/?share_source=copy_web&vd_source=253f7e2d634ff4f728c7e7bfa218f990)
   -  Scan the following QRCode to view the video. 
 
-  ![](./resource/GR5526_Smart_Watch_Video.png) 
+  ![](./resource/GR5526_Smart_Watch_Video.png)  
 
 
 

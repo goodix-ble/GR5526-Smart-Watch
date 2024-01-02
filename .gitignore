@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# project trash files
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/EventRecorderStub.scvd
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/JLinkLog.txt
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/JLinkSettings.ini
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/Listings/
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/Objects/
+projects/peripheral/graphics/gr5526_smart_watch/Keil_5/gr5526_smart_watch.uvguix.*
+
+
