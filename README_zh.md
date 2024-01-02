@@ -1,7 +1,4 @@
 # GR5526-Smart-Watch
-
-[EN](https://github.com/nixlong/GR5526-Smart-Watch/blob/main/README.md)   |  [中文](https://github.com/nixlong/GR5526-Smart-Watch/blob/main/README_zh.md)
-
 [TOC]
 
 ## 1. Introduction
