@@ -46,15 +46,13 @@ The Ref Project is located at [projects/peripheral/graphics/gr5526_smart_watch](
 
 ### 2.4 Demo effect for Ref-Design 
 
-- UI Snapshot for This Design 
+- UI Snapshot for This Design (partial UI)
+
+  https://github.com/nixlong/GR5526-Smart-Watch/blob/main/resource/smart_watch_video.mp4
 
   
 
-  ![](./resource/GR5526_watch_face_demo.png) 
-
-  
-
-- You can watch the Demo effect :
+- You can watch the Demo effect (More UI):
 
   - Click the web link : [Smart_Watch_Video](https://www.bilibili.com/video/BV1Re411X7P6/?share_source=copy_web&vd_source=253f7e2d634ff4f728c7e7bfa218f990)
   -  Scan the following QRCode to view the video. 
