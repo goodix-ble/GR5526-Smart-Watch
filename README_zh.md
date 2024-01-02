@@ -25,7 +25,7 @@ GR5526系列是汇顶科技推出的Bluetooth 5.3单模低功耗蓝牙系统级�
 
 ## 2. Smart Watch
 
-### 2.1 Ref Project 
+### 2.1 工程说明 
 
 参考工程位于 [projects/peripheral/graphics/gr5526_smart_watch](projects/peripheral/graphics/gr5526_smart_watch), 默认由 Keil µVision5 构建. 同时也支持 gcc和IAR 编译. 
 
