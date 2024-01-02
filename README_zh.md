@@ -53,15 +53,12 @@ GR5526系列是汇顶科技推出的Bluetooth 5.3单模低功耗蓝牙系统级�
 ### 2.4 参考设计的演示效果 
 
 - 参考设计演示视频(部分界面)
+
+  <video src="./resource/smart_watch_video.mp4"></video>
+
+  ![](./resource/GR5526_watch_face_demo.png) 
+
   
-  https://github.com/nixlong/GR5526-Smart-Watch/blob/main/resource/smart_watch_video.mp4
-  
-<iframe width="854" height="480" src="https://github.com/nixlong/GR5526-Smart-Watch/blob/main/resource/smart_watch_video.mp4" frameborder="0" allowfullscreen></iframe>
-
-<video src="./resource/smart_watch_video.mp4"></video>
-
-<video src="https://github.com/nixlong/GR5526-Smart-Watch/blob/main/resource/smart_watch_video.mp4"></video>
-
 
 - 可以通过下面方式观看参考设计的演示效果(更多界面) :
 
