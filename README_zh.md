@@ -44,9 +44,9 @@ GR5526系列是汇顶科技推出的Bluetooth 5.3单模低功耗蓝牙系统级�
 
 ### 2.3 硬件相关
 
-- 本Smart Watch参考设计基于 GR5526 SK开发板进行,  用户可以从这里找到关于开发板的介绍  [GR5526_SK](https://www.goodix.com/en/kit/gr5526_starter_kit)
+- 本Smart Watch参考设计基于 GR5526 SK开发板进行,  用户可以从这里找到关于开发板的介绍  [GR5526_SK](https://www.goodix.com/zh/kit/gr5526_starter_kit)
 
-- 点击 [GR5526_Diagram](https://www.goodix.com/en/docview/GR5526-SK-BASIC-RevC_Rev.1.0?objectId=159&objectType=document&version=313) 查看 GR5526 SK 板的电路图, 用户可以参考SK电路图, 进行自己的二次开发修改. 进行产品开发或 DIY 
+- 点击 [GR5526_Diagram]https://www.goodix.com/zh/docview/GR5526-SK-BASIC-RevC_V1.0?objectId=278&objectType=document&version=449) 查看 GR5526 SK 板的电路图, 用户可以参考SK电路图, 进行自己的二次开发修改. 进行产品开发或 DIY 
 
   
 
