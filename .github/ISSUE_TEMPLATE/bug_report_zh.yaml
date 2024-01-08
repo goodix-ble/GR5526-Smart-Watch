@@ -1,0 +1,60 @@
+name: Bug Report[ZH]
+description: 问题报告,中文格式
+title: "[Bug]: "
+assignees: ["nixlong"]
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间来填写Bug报告!
+  - type: input
+    id: contact
+    attributes:
+      label: 联系方式
+      description: 如果我们需要获取更多Bug的细节,应该如何联系你?
+      placeholder: 比如 email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: branch-version
+    attributes:
+      label: 代码分支/版本
+      placeholder: 请准确描述使用的代码版本或分支?
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Bug描述
+      placeholder: 请描述下bug的现象和细节
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 复现步骤
+      placeholder: 请描述下复现bug的方法步骤
+    validations:
+      required: true
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: 期望结果
+      placeholder: 期望结果是 ...
+    validations:
+      required: true
+  - type: textarea
+    id: actual-result
+    attributes:
+      label: 实际结果
+      placeholder: 实际结果是 ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关的日志
+      placeholder: 请将bug相关的重要日志信息粘贴到这里(或上传文件).
+    validations:
+      required: false
