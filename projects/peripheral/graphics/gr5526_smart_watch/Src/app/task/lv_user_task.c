@@ -77,7 +77,9 @@ void app_gui_render_task(void *p_arg)
             //osal_task_delay(delayTime);
             osal_sema_take(s_gui_refresh_sem, delayTime);
         } else {
+            printf("Suspend GUI Task \r\n");
             osal_sema_take(s_gui_refresh_sem, OSAL_MAX_DELAY);
+            printf("Resume GUI Task \r\n");
         }
     }
 }
@@ -86,6 +88,8 @@ void app_gui_render_task(void *p_arg)
 static void _lv_reload_gui(void* user_data) {
     lv_obj_invalidate(lv_scr_act());
 }
+
+extern bool app_graphics_gpu_is_idle(void);
 
 void app_indev_read_task(void * args)
 {
@@ -115,10 +119,36 @@ void app_indev_read_task(void * args)
                     /* no tp-press event, wait in period-semaphore */
                     osal_sema_take(s_sleep_mgnt_sem, 500);
                     if(sys_state_calc_delta_time() >= SYS_SCREEN_OFF_WAIT_TIME_MS) {
-                        sys_state_switch(SYS_STATE_SCREEN_OFF);
-                        printf("GOTO SCREEN OFF, tick: %d \r\n", osal_task_get_tick_count());
-                        sys_state_reset_base_time();
-                        drv_adapter_disp_on(false);
+
+                        bool    is_aod_off = false;
+                        uint8_t wait_count = 15;
+
+                        // Stop Refresh firstly.
+                        lv_wms_refresh_enabled_set(false);
+                        osal_task_delay_ms(100);
+
+                        // wait GPU to idle
+                        while(wait_count--) {
+                            if(app_graphics_gpu_is_idle()) {
+                                is_aod_off = true;
+                                break;
+                            } else {
+                                osal_task_delay_ms(10);
+                                printf("+");
+                            }
+                        }
+
+                        if(is_aod_off) {
+                            printf("GOTO SCREEN OFF, tick: %d \r\n", osal_task_get_tick_count());
+                            sys_state_switch(SYS_STATE_SCREEN_OFF);
+                            lv_wms_display_enabled_set(false);
+                            drv_adapter_disp_on(false);
+                            sys_state_reset_base_time();
+                        } else {
+                            printf("Fail to Screen Off, keep Active!\r\n ");
+                            lv_wms_refresh_enabled_set(true);
+                            sys_state_reset_base_time();
+                        }
                     }
                 }
             }
@@ -135,6 +165,8 @@ void app_indev_read_task(void * args)
                     }
                 } else {
                     printf("TP Evt Occurs, Return to Active!\r\n");
+                    lv_wms_refresh_enabled_set(true);
+                    lv_wms_display_enabled_set(true);
                     drv_adapter_disp_on(true);
                     sys_state_reset_base_time();
                     sys_state_switch(SYS_STATE_ACTIVE);
@@ -146,8 +178,13 @@ void app_indev_read_task(void * args)
             {
                 printf("GOTO Sleep!\r\n");
                 sys_peripherals_sleep();
+
                 osal_sema_take(s_sleep_mgnt_sem, OSAL_MAX_DELAY);
+
+                printf("Resume from Sleep!\r\n");
                 sys_peripherals_resume();
+                lv_wms_refresh_enabled_set(true);
+                lv_wms_display_enabled_set(true);
                 drv_adapter_disp_on(true);
                 lv_async_call(_lv_reload_gui, NULL);
                 osal_sema_give(s_gui_refresh_sem);
@@ -168,6 +205,12 @@ void app_indev_read_task(void * args)
  */
 void _touchpad_drv_irq_notify(void) {
     osal_sema_give(s_sleep_mgnt_sem);
+}
+
+void _key_drv_irq_notify(void) {
+    if(SYS_STATE_SLEEP == sys_state_get()) {
+        osal_sema_give(s_sleep_mgnt_sem);
+    }
 }
 
 /**

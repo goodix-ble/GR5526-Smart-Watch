@@ -141,8 +141,9 @@ static void disp_init(void)
  * 'lv_disp_flush_ready()' has to be called when finished. */
 static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
-    drv_disp_flush(disp_drv, area, color_p);
-
+    if(lv_wms_is_display_enabled()) {
+        drv_disp_flush(disp_drv, area, color_p);
+    }
     disp_drv->draw_buf->flushing = 0;
     disp_drv->draw_buf->flushing_last = 0;
 }

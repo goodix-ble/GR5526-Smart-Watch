@@ -55,7 +55,7 @@
  * DEFINES
  *****************************************************************************************
  */
-#define DEVICE_NAME                     "5526_SK.C"  /**< Device Name which will be set in GAP. */
+#define DEVICE_NAME                     "SmartWatch"  /**< Device Name which will be set in GAP. */
 #define APP_ADV_INTERVAL                32              /**< The advertising interval (in units of 0.625 ms). */
 #define APP_ADV_TIMEOUT                 5000            /**< Advertising timeout (in units of 10ms). */
 #define APP_PCS_NTF_NB                  100             /**< Number of app pcs notify. */
@@ -84,9 +84,9 @@ static ble_gap_adv_time_param_t s_gap_adv_time_param;            /**< Advertisin
 
 static const uint8_t s_adv_data_set[] =
 {
-    0x0A,
+    0x0B,
     BLE_GAP_AD_TYPE_COMPLETE_NAME,
-    '5', '5', '2', '6', '_', 'S', 'K', '.', 'X',
+    'S', 'm', 'a', 'r', 't', 'W', 'a', 't', 'c', 'h',
 };
 
 static const uint8_t s_adv_rsp_data_set[] =

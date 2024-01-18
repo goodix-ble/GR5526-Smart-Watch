@@ -198,6 +198,12 @@ SECTION_RAM_CODE static uint8_t pwr_mgmt_system_sleep(void)
     return ret;
 }
 
+extern volatile uint32_t g_devices_state ;
+extern volatile uint32_t g_extra_devices_state ;
+
+uint32_t _devices_state = 0;
+uint32_t _extra_devices_state = 0 ;
+
 SECTION_RAM_CODE static void pwr_mgmt_enter_sleep_with_cond(TickType_t pwr_mgmt_expected_time)
 {
     s_expect_sleep_ticks = pwr_mgmt_expected_time;
@@ -210,6 +216,10 @@ SECTION_RAM_CODE static void pwr_mgmt_enter_sleep_with_cond(TickType_t pwr_mgmt_
     }
 
     systick_sleep_timeout_set(s_expect_sleep_ticks);
+
+    _devices_state       = g_devices_state;
+    _extra_devices_state = g_extra_devices_state;
+
     if ( (s_expect_sleep_ticks < 5) ||
         (PMR_MGMT_SLEEP_MODE != pwr_mgmt_mode_get()) ||
         (DEVICE_BUSY == pwr_mgmt_dev_suspend()) )

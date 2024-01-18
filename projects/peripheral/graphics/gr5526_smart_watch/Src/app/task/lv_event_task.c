@@ -119,6 +119,7 @@ bool lv_gui_evt_send(uint16_t evt_id, void * data) {
     return (xRet == OSAL_SUCCESS) ? true : false;
 }
 
+extern void _key_drv_irq_notify(void);
 /*
  * override the __weak function in board_SK.c
  */
@@ -133,6 +134,9 @@ void app_key_evt_handler(uint8_t key_id, app_key_click_type_t key_click_type)
     } else if((key_id == 0) && (APP_KEY_LONG_CLICK == key_click_type)) {
         lv_gui_evt_send(WMS_GUI_EVT_KEY1_LONG_PRESSED, NULL);
     }
+
+    // Any Key can wake device from sleep state
+    _key_drv_irq_notify();
 
     return;
 }

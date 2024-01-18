@@ -55,6 +55,6 @@ void app_periph_init(void)
     drv_adapter_norflash_register();
     drv_adapter_touchpad_register();
 
-    pwr_mgmt_mode_set(PMR_MGMT_ACTIVE_MODE);
+    pwr_mgmt_mode_set(PMR_MGMT_SLEEP_MODE);
 }
 

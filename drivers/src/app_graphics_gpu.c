@@ -194,6 +194,13 @@ void graphics_gpu_deinit(void) {
     NVIC_ClearPendingIRQ(TSI_GPU_ERR_IRQn);
 }
 
+bool app_graphics_gpu_is_idle(void) {
+    if(0 == g_cl_create_cnt) {
+        return true;
+    }
+
+    return false;
+}
 
 void app_graphics_gpu_sleep(void)
 {
