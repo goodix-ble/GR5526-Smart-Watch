@@ -1,0 +1,40 @@
+name: New Feature[EN]
+description: New Feature in English
+title: "[Feat]: "
+assignees: ["nixlong"]
+labels: ["feat"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New feature to implement!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: branch-version
+    attributes:
+      label: The Branch/Version
+      placeholder: What version of our software are you running?
+    validations:
+      required: true
+  - type: textarea
+    id: new-feat
+    attributes:
+      label: Feature Description
+      placeholder: describe the detail and implement for new feature
+    validations:
+      required: true
+  - type: textarea
+    id: verify-desc
+    attributes:
+      label: Verify Description
+      placeholder: describe the verification to new feature
+    validations:
+      required: false
+
