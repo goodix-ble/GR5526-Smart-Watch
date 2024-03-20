@@ -235,5 +235,5 @@ void board_init(void)
 {
     bsp_log_init();
     bsp_key_init();
-    bsp_led_init();
+    // bsp_led_init(); // this causes external crystal not work for QFN68 CHIP. because LED takes up the crystal pin
 }

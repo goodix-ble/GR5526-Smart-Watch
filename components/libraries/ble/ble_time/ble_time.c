@@ -45,10 +45,12 @@
 
 typedef struct
 {
-    uint32_t hs;
-    uint16_t hus;
-    uint32_t bts;
-} rwip_time_t;
+	uint32_t hs;
+	uint16_t hus;
+	uint32_t bts;
+}rwip_time_t;
+
+static ble_time_t s_ble_time = {0};
 
 /**
  ****************************************************************************************
@@ -62,6 +64,14 @@ extern rwip_time_t rwip_time_get(void);
 
 /**
  ****************************************************************************************
+ * @brief  This function get the ble core power status.
+ *
+ ****************************************************************************************
+ */
+extern bool ble_core_is_powered_on(void);
+
+/**
+ ****************************************************************************************
  * @brief  This function gets the ble time.
  *
  * @note   This function is supported only when ble stack is initiated
@@ -70,13 +80,16 @@ extern rwip_time_t rwip_time_get(void);
  */
 SECTION_RAM_CODE ble_time_t ble_time_get(void)
 {
-    rwip_time_t ret1;
-    ble_time_t ret2;
+	rwip_time_t rwip_time = {0};
 
-    pwr_mgmt_ble_wakeup();
-    ret1 = rwip_time_get();
-    ret2.hs = ret1.hs;
-    ret2.hus = ret1.hus;
+	pwr_mgmt_ble_wakeup();
 
-    return ret2;
+	if (ble_core_is_powered_on())
+	{
+		rwip_time       = rwip_time_get();
+		s_ble_time.hs 	= rwip_time.hs;
+		s_ble_time.hus 	= rwip_time.hus; 
+	}
+
+	return s_ble_time;
 }

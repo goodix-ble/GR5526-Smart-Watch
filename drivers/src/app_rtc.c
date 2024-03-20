@@ -504,6 +504,13 @@ void calendar_time_sync(void)
 
     // calculate the sync diff
     ble_time_t current_time = ble_time_get();
+
+    /* Work-Around */
+    if(current_time.hs < s_ble_sync_time.hs ) {
+        //printf("RTC Exception, Now : %d-%d, Last: %d-%d\r\n",current_time.hs, current_time.hus, s_ble_sync_time.hs, s_ble_sync_time.hus);
+        s_ble_sync_time = current_time;
+    }
+
     uint64_t diff_hus = (uint64_t)CLK_SUB(current_time.hs, s_ble_sync_time.hs)*HALF_SLOT_SIZE;
     diff_hus = diff_hus +  current_time.hus - s_ble_sync_time.hus;
 
